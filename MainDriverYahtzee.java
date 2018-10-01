@@ -27,37 +27,42 @@
  		int dice4=0;
  		int dice5=0;
  		int mykey=0; //Pause key
+ 		
+ 		int i=1;
  		 		
- 		Scanner keyboard=new Scanner(System.in);
- 	
- 		for(int round=1;round<=13;round++)
- 		{
- 			for(int i=1;i<=3;i++) //Roll Dice Loop	
- 			{
- 				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 		Scanner keyboard=new Scanner(System.in); //New Scanner
+		
+ 		for(int round=1;round<=13;round++) //Loop for Thirteen Rounds of Game
+ 		{ 			
+			do //Roll Dice Loop
+ 			{	 			
+	 			System.out.println("PRESS ENTER TO SHOOT THE DICE"); //Roll the Dice when wanted.
+	 			mykey=(int)System.in.read(); //Pause
 	 			new ProcessBuilder("cmd","/c","cls").inheritIO().start().waitFor(); // Clear Screen Command
-	 			if(reroll[0]==2) //Roll
+	 		
+	 			
+	 			if(reroll[0]==2) //Roll dice 1 if set to reroll
  				{
  					dice1=roll();
  				}
-	 			if(reroll[1]==2) //Roll
+	 			if(reroll[1]==2) //Roll dice 2 if set to reroll
  				{
  					dice2=roll();
  				}
-	 			if(reroll[2]==2) //Roll
+	 			if(reroll[2]==2) //Roll dice 3 if set to reroll
  				{
  					dice3=roll();
  				}
-	 			if(reroll[3]==2) //Roll
+	 			if(reroll[3]==2) //Roll dice 4 if set to reroll
  				{
  					dice4=roll();
  				}
-	 			if(reroll[4]==2) //Roll
+	 			if(reroll[4]==2) //Roll dice 5 if set to reroll
  				{
  					dice5=roll();
  				}
-	 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- 				System.out.println("ROUND: "+round+"                    ROLL: "+i);
+
+ 				System.out.println("ROUND: "+round+"                    ROLL: "+i); //Display Round and Roll Number, Numerical Dice instead of ASCII Art
 				System.out.println("Dice 1: "+dice1);
 	 			System.out.println("Dice 2: "+dice2);
  				System.out.println("Dice 3: "+dice3);
@@ -65,83 +70,92 @@
  				System.out.println("Dice 5: "+dice5);
  				System.out.println("");
  			
- 				if(i!=3) //Choose what to keep
+ 				if(i!=3) //Choose which dice to keep or reroll (will not work after third roll)
  				{
- 					System.out.println("DO YOU WANT TO KEEP DICE 1?"); //REROLL DICE 1?
+ 					System.out.println("DO YOU WANT TO KEEP DICE 1?"); //Reroll dice 1?
 					System.out.println("[INPUT ANSWER]");
 					System.out.println("     1) Yes");
 	 				System.out.println("     2) No");
- 			
- 					reroll[0]=keyboard.nextInt(); //If 1, Reroll
- 					if((reroll[0]!=1)&&(reroll[0]!=2)) //Tests if Yes or No was given; defaults to no reroll
+ 					reroll[0]=keyboard.nextInt(); //Input Roll or Keep
+ 					if((reroll[0]!=1)&&(reroll[0]!=2)) //Defaults to keep if invalid option given
 	 				{
  						reroll[0]=1;
  					}
-	 				////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////2
-					System.out.println("DO YOU WANT TO KEEP DICE 2?"); //REROLL DICE 2?
+ 					
+					System.out.println("DO YOU WANT TO KEEP DICE 2?"); //Reroll dice 2?
 	 				System.out.println("[INPUT ANSWER]");
  					System.out.println("     1) Yes");
  					System.out.println("     2) No");
- 			
- 					reroll[1]=keyboard.nextInt(); //If 1, Reroll
- 					if((reroll[1]!=1)&&(reroll[1]!=2)) //Tests if Yes or No was given; defaults to no reroll
+ 					reroll[1]=keyboard.nextInt(); //Input option
+ 					if((reroll[1]!=1)&&(reroll[1]!=2)) //Prevents invalid option
 	 				{
  						reroll[1]=1;
  					} 		
- 					////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////3
- 					System.out.println("DO YOU WANT TO KEEP DICE 3?"); //REROLL DICE 3?
+
+ 					System.out.println("DO YOU WANT TO KEEP DICE 3?"); //Reroll dice 3?
  					System.out.println("[INPUT ANSWER]");
  					System.out.println("     1) Yes");
  					System.out.println("     2) No");
- 			
- 					reroll[2]=keyboard.nextInt(); //If 1, Reroll
- 					if((reroll[2]!=1)&&(reroll[2]!=2)) //Tests if Yes or No was given; defaults to no reroll
+ 					reroll[2]=keyboard.nextInt(); //Input
+ 					if((reroll[2]!=1)&&(reroll[2]!=2)) //Invalid option test
 	 				{
  						reroll[2]=1;
  					}
- 					////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////4
-					System.out.println("DO YOU WANT TO KEEP DICE 4?"); //REROLL DICE 4?
+
+					System.out.println("DO YOU WANT TO KEEP DICE 4?"); //Reroll dice 4?
 					System.out.println("[INPUT ANSWER]");
 					System.out.println("     1) Yes");
 					System.out.println("     2) No");
- 				
-					reroll[3]=keyboard.nextInt(); //If 1, Reroll
-					if((reroll[3]!=1)&&(reroll[3]!=2)) //Tests if Yes or No was given; defaults to no reroll
+					reroll[3]=keyboard.nextInt(); //Input
+					if((reroll[3]!=1)&&(reroll[3]!=2)) //Invalid option
 					{
 						reroll[3]=1;
 					}
-					////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////5
-					System.out.println("DO YOU WANT TO KEEP DICE 5?"); //REROLL DICE 5?
+
+					System.out.println("DO YOU WANT TO KEEP DICE 5?"); //Reroll dice 5?
 					System.out.println("[INPUT ANSWER]");
 					System.out.println("     1) Yes");
 					System.out.println("     2) No");
- 				
-					reroll[4]=keyboard.nextInt(); //If 1, Reroll
-					if((reroll[4]!=1)&&(reroll[4]!=2)) //Tests if Yes or No was given; defaults to no reroll
+					reroll[4]=keyboard.nextInt(); //Input
+					if((reroll[4]!=1)&&(reroll[4]!=2)) //Invalid?
 					{
 						reroll[4]=1;
 					}
  				} //End Choose what to keep
- 			} //Close Roll Dice Loop
- 			dice.add(dice1);
+ 				i=i+1; //Next Round
+ 				
+ 				if((reroll[0]==1)&&(reroll[1]==1)&&(reroll[2]==1)&&(reroll[3]==1)&&(reroll[4]==1)) //Stops rerolling if all dice are to be kept
+ 				{
+ 					i=4; //Breaks loop
+ 				}			
+ 			}while(i<=3); //Stop rolling dice for that round after three rolls
+ 			
+ 			dice.add(dice1); //Add dice values to the Arraylist
  			dice.add(dice2);
 	 		dice.add(dice3);
  			dice.add(dice4);
  			dice.add(dice5);
  		
- 			Collections.sort(dice);
- 			System.out.println(dice); 
- 			mykey=(int)System.in.read(); //Pause
- 			
- 			///PASS TO PARTNER PROGRAM DUUUUUUUDE!!!
- 			
+ 			Collections.sort(dice); //Sort/Pertify ArrayList for Passing
+ 			System.out.println(dice); //Display ArrayList
+			
+ 			//Pass to Card Class
+ 		
+ 		 	dice.clear(); //Reset dice
+ 		 	reroll[0]=2; //Enable Reroll
+ 		 	reroll[1]=2;
+ 		 	reroll[2]=2;
+ 		 	reroll[3]=2;
+ 		 	reroll[4]=2;
+ 		 	reroll[5]=2;
+ 		 	i=1; //Reset roll set
 		} //Thirteen Rounds of the Game
 		
-		//Final Score Stuff AND HOW DID I DO, BROOOOO!
+		//Final Score Calculations
 			
  	} 	//Close main Method
  	
- 	public static int roll()
+ 	public static int roll() //Dice rolls
  	{
  		Random generator = new Random(); //Random Number Block
 		int random=0;
@@ -167,8 +181,12 @@
 			case 6:
 				rollsix();
 				break;
-			default:
-				System.out.println("Welcome to the Far Lands of brokenness.");
+			default: //If the six sided dice rolls a seven
+				System.out.println("Well I told him once or twice,"); //Easter Egg to In the Jailhouse Now (Soggy Bottom Boys)
+				System.out.println("\"Stop playing cards and a-shooting dice.\"");
+				System.out.println("He's in the jailhouse now.");
+				System.out.println("How did you roll a seven?");
+				
 				break;	
 		} //Close ASCII switch
 				
