@@ -32,6 +32,8 @@
  		 		
  		Scanner keyboard=new Scanner(System.in); //New Scanner
 		
+		titles(); //Display Titles
+		
  		for(int round=1;round<=13;round++) //Loop for Thirteen Rounds of Game
  		{ 			
 			do //Roll Dice Loop
@@ -253,4 +255,81 @@
 		System.out.println(" \\|       |      " );
 		System.out.println("    =======        " );
 	} //Die 1 Display
+	
+	public static void titles() throws InterruptedException, IOException
+	{
+		int mykey=0; //Variables for Title Sequence
+		Scanner keyboard=new Scanner(System.in);
+		int option=0;
+		
+		System.out.println("COMPUTER: For the best experience, please play in full screen."); //Full Screen Advisory
+ 		System.out.println("Press Any Key to Continue...");
+		mykey=(int)System.in.read(); //Pause
+		new ProcessBuilder("cmd","/c","cls").inheritIO().start().waitFor(); // Clear Screen Command
+		
+		System.out.println("YAHTZEE (JAVA EDITION)"); //Opening Screen
+		System.out.println(" A Go-Around Studios Game");
+		System.out.println(" Made in Association with GamesRUs");
+		System.out.println("");
+		Thread.sleep(2500);
+		System.out.println("     [INPUT ACTION]");
+		System.out.println("     1) Read the Rules");
+		System.out.println("     2) Play the Game");
+		
+		option=keyboard.nextInt(); //Read Instructions or No
+		if(option!=2)
+		{
+			rules();
+		}
+	} //Close titles Method
+	
+	public static void rules() throws IOException, InterruptedException
+	{
+		int mykey=0; //Define variable for rules method
+		
+		new ProcessBuilder("cmd","/c","cls").inheritIO().start().waitFor(); // Clear Screen Command
+		System.out.println("RULES:"); //Display Rules
+		System.out.println("Game Setup:");
+		System.out.println("Each player rolls the five dice to determine who goes first (highest total goes first). On your turn you may roll up to three times, and you may pick and choose which dice you wish to reroll after the initial roll. You may interrupt and");
+		System.out.println("end your turn at any time before the third roll, but you must fill in a box on your score card: with either a zero, or, if your dice match a specific sequence worth points, you may write that in instead of a zero. You may fill in any");
+		System.out.println("single box you wish and use any sequence of dice you wish that are shown on your final roll.");
+		System.out.println("Once one player has finished their turn by marking something on their score card, the next player begins their turn. This continues until all players have filled in all 13 boxes on their score card and a final point tally is taken, with");
+		System.out.println("the highest score revealing the winner.");
+		System.out.println("");
+		System.out.println("Upper Section Scoring:");
+		System.out.println("	Aces -- Add up the value of all dice showing 1");
+		System.out.println("	Twos -- Add up the value of all dice showing 2");
+		System.out.println("	Threes -- Add up the value of all dice showing 3");
+		System.out.println("	Fours -- Add up the value of all dice showing 4");
+		System.out.println("	Fives -- Add up the value of all dice showing 5");
+		System.out.println("	Sixes -- Add up the value of all dice showing 6");
+		System.out.println("	Players earn an additional 35 point bonus points if they have at least 63 points total in the above categories.");
+		System.out.println("");
+		System.out.println("Lower Section Scoring:");
+		System.out.println("	3 of a Kind -- Add up the value of all of the dice if excatly three of the dice rolled the same number.");
+		System.out.println("	4 of a Kind -- Add up the value of all of the dice if exactly four of the dice rolled the same number.");
+		System.out.println("	Full House -- Rolling two of a kind and three of a different kind is worth 25 points");
+		System.out.println("	Small Straight -- A sequence of four dice (1, 2, 3, 4 or 2, 3, 4, 5) is worth 30 points");
+		System.out.println("	Large Straight -- A sequence of five dice (1, 2, 3, 4, 5) is worth 40 points");
+		System.out.println("	Yahtzee -- Rolling five of the same number is worth 50 points");
+		System.out.println("	Chance -- Sum total of all five dice");
+		System.out.println("");
+		System.out.println("Special Scoring Rules:");
+		System.out.println("If you’ve already scored a Yahtzee you score an additional 100 points for each Yahtzee beyond the first and apply the Joker Rules.");
+		System.out.println("If you zeroed out your Yahtzee then only the Joker Rules apply; you must fill in a slot on your scorecard starting with the upper section first.");
+		System.out.println("");
+		System.out.println("Joker Rules:");
+		System.out.println("");
+		System.out.println("Joker rules are a special scoring exception for additional Yahtzees that cannot score normally due to the Yahtzee already being zeroed out or scored.");
+		System.out.println("If you have an open space in the upper section of your scorecard (numbers one to six and chance) you add up the total sum of all of the dice. If the upper section is filled in already you must fill in the lower section of your score");
+		System.out.println("card as follows:");
+		System.out.println("	Three of a kind and four of a kind=sum of all five dice");
+		System.out.println("	Full house=25 points");
+		System.out.println("	Small straight=30 points");
+		System.out.println("	Large straight=40 points");
+		System.out.println("");
+		System.out.println("PRESS ENTER TO START THE GAME");
+		mykey=(int)System.in.read(); //Pause
+		new ProcessBuilder("cmd","/c","cls").inheritIO().start().waitFor(); // Clear Screen Command
+	}
  } //Close MainDriverYahtzee Class
