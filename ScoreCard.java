@@ -61,12 +61,11 @@ public class ScoreCard {
                 }
             }
         } else if (space == 9) {
-            int temp1 = -1;
+            int temp1 = dice.get(0);
             int temp2 = -1;
-            for (int i = 0; i < 5; i++) {
-                if (temp1 == -1) { temp1 = dice.get(i); }
-                else if (temp2 == -1) { temp2 = dice.get(i); }
-                else if (temp1 != dice.get(i) || temp2 != dice.get(i)) {  return 0; }
+            for (int i = 1; i < 5; i++) {
+                if (temp2 == -1 && temp1 != dice.get(i)) { temp2 = dice.get(i); }
+                else if (temp1 != dice.get(i) && temp2 != dice.get(i)) { return 0; }
             }
             return 25;
         } else if (space == 10 || space == 11) {
