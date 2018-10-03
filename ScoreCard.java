@@ -41,8 +41,9 @@ public class ScoreCard {
     public int get_total_dice(ArrayList<Integer> dice) {
         int score = 0;
         for (int i = 0; i < 5; i++) {
-            score += i;
+            score += dice.get(i);
         }
+        System.out.println(score);
         return score;
     }
     public int get_score_roll(ArrayList<Integer> dice, int space) {
@@ -76,10 +77,13 @@ public class ScoreCard {
                     times += 1;
                 }
             }
-            if (times <= 2 || (space == 10 && times <= 1)) {
-                if (space == 10) { score = 30; }
-                else { score = 40; }
+            if (space == 10 && times <= 1) {
+                score = 30;
             }
+            else if (space == 11 && times <= 0) {
+                score = 40;
+            }
+
         } else if (space == 12) {
             for (int i = 0; i < 4; i++) {
                 if (dice.get(i) != dice.get(i + 1)) {
@@ -110,6 +114,9 @@ public class ScoreCard {
             cc = g.nextInt();
         }
 
+        if (cc == 13 && this.totals[cc - 1] != -1) {
+            this.totals[cc - 1] += this.get_score_roll(dice, cc);
+        }
         this.totals[cc - 1] = this.get_score_roll(dice, cc);
 
         System.out.printf("That dice roll in that category was worth: %d points.\n", this.totals[cc - 1]);
