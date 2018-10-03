@@ -76,7 +76,7 @@ public class ScoreCard {
                     times += 1;
                 }
             }
-            if (times <= 2 && (space == 10 && times <= 1)) {
+            if (times <= 2 || (space == 10 && times <= 1)) {
                 if (space == 10) { score = 30; }
                 else { score = 40; }
             }
