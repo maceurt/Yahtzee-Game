@@ -27,13 +27,14 @@ public class ScoreCard {
     public int get_final_score() {
         int top_score = 0;
         for (int i = 0; i < 6; i++) {
-            top_score += this.totals[i];
+            if (this.totals[i] != -1) {top_score += this.totals[i];}
+
         }
         if (top_score >= 63) {
             top_score += 35;
         }
-        for (int i = 6; i < 14; i++) {
-            top_score += this.totals[i];
+        for (int i = 6; i < 13; i++) {
+            if (this.totals[i] != -1) {top_score += this.totals[i];}
         }
         return top_score;
     }
