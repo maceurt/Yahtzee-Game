@@ -36,6 +36,8 @@ public class ScoreCard {
         for (int i = 6; i < 13; i++) {
             if (this.totals[i] != -1) {top_score += this.totals[i];}
         }
+
+        System.out.printf("\nFinal Score: %d", top_score);
         return top_score;
     }
 
