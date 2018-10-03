@@ -158,6 +158,8 @@
  		 	i=1; //Reset roll set
 		} //Thirteen Rounds of the Game
 		
+		score.get_final_score();
+		
 		//Final Score Calculations
 			
  	} 	//Close main Method
