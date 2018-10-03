@@ -85,7 +85,7 @@ public class ScoreCard {
         System.out.println("What category do you want to put your dice total? ");
         Scanner g = new Scanner(System.in);
         int cc = g.nextInt();
-        while (cc < 1 || cc > 13 || this.totals[cc] != -1) {
+        while ((cc < 1 || cc > 13) || this.totals[cc - 1] != -1) {
             if (cc < 1 || cc > 13) {
                 System.out.println("Out of range of scorecard.");
             }
