@@ -28,7 +28,9 @@
  		int dice5=0;
  		int mykey=0; //Pause key
  		
- 		int i=1;
+ 		int i=1; //Dice roll round (Three rolls per turn)
+ 		
+ 		ScoreCard score=new ScoreCard(); //Creates a Scorecard
  		 		
  		Scanner keyboard=new Scanner(System.in); //New Scanner
 		
@@ -42,7 +44,7 @@
 	 			mykey=(int)System.in.read(); //Pause
 	 			new ProcessBuilder("cmd","/c","cls").inheritIO().start().waitFor(); // Clear Screen Command
 	 		
-	 			
+	 			//Change to for loop with array[i] for efficiency
 	 			if(reroll[0]==2) //Roll dice 1 if set to reroll
  				{
  					dice1=roll();
@@ -128,7 +130,7 @@
  				
  				if((reroll[0]==1)&&(reroll[1]==1)&&(reroll[2]==1)&&(reroll[3]==1)&&(reroll[4]==1)) //Stops rerolling if all dice are to be kept
  				{
- 					i=4; //Breaks loop
+ 					i=5; //Breaks loop
  				}			
  			}while(i<=3); //Stop rolling dice for that round after three rolls
  			
@@ -141,8 +143,11 @@
  			Collections.sort(dice); //Sort/Pertify ArrayList for Passing
  			System.out.println(dice); //Display ArrayList
 			
- 			//Pass to Card Class
- 		
+ 			////////////////////////Pass to Card Class
+ 			mykey=(int)System.in.read();
+ 			score.turn(dice);
+ 			mykey=(int)System.in.read();
+ 			
  		 	dice.clear(); //Reset dice
  		 	reroll[0]=2; //Enable Reroll
  		 	reroll[1]=2;
@@ -313,21 +318,6 @@
 		System.out.println("	Large Straight -- A sequence of five dice (1, 2, 3, 4, 5) is worth 40 points");
 		System.out.println("	Yahtzee -- Rolling five of the same number is worth 50 points");
 		System.out.println("	Chance -- Sum total of all five dice");
-		System.out.println("");
-		System.out.println("Special Scoring Rules:");
-		System.out.println("If you’ve already scored a Yahtzee you score an additional 100 points for each Yahtzee beyond the first and apply the Joker Rules.");
-		System.out.println("If you zeroed out your Yahtzee then only the Joker Rules apply; you must fill in a slot on your scorecard starting with the upper section first.");
-		System.out.println("");
-		System.out.println("Joker Rules:");
-		System.out.println("");
-		System.out.println("Joker rules are a special scoring exception for additional Yahtzees that cannot score normally due to the Yahtzee already being zeroed out or scored.");
-		System.out.println("If you have an open space in the upper section of your scorecard (numbers one to six and chance) you add up the total sum of all of the dice. If the upper section is filled in already you must fill in the lower section of your score");
-		System.out.println("card as follows:");
-		System.out.println("	Three of a kind and four of a kind=sum of all five dice");
-		System.out.println("	Full house=25 points");
-		System.out.println("	Small straight=30 points");
-		System.out.println("	Large straight=40 points");
-		System.out.println("");
 		System.out.println("PRESS ENTER TO START THE GAME");
 		mykey=(int)System.in.read(); //Pause
 		new ProcessBuilder("cmd","/c","cls").inheritIO().start().waitFor(); // Clear Screen Command
