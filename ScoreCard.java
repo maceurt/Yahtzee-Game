@@ -1,11 +1,10 @@
-
 import java.io.*;
 import java.util.*;
 
 public class ScoreCard {
 
     String[] bottom_scores_map = {"1 total", "2 total", "3 total", "4 total", "5 total", "6 total", "3 of a kind", "4 of a kind",
-                                  "full house", "small straight", "large straight", "yahtzee", "chance"};
+            "full house", "small straight", "large straight", "yahtzee", "chance"};
     int[] totals = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
     int total_score = 0;
 
@@ -23,6 +22,20 @@ public class ScoreCard {
             System.out.println("POSITION " + Integer.toString(j + 1) + " - " + this.bottom_scores_map[j] + ": " + t_num);
         }
         //System.out.println("POSITION 12 - " + " Yahtzee " + )
+    }
+
+    public int get_final_score() {
+        int top_score = 0;
+        for (int i = 0; i < 6; i++) {
+            top_score += this.totals[i];
+        }
+        if (top_score >= 63) {
+            top_score += 35;
+        }
+        for (int i = 6; i < 14; i++) {
+            top_score += this.totals[i];
+        }
+        return top_score;
     }
 
     public int get_total_dice(ArrayList<Integer> dice) {
@@ -85,7 +98,7 @@ public class ScoreCard {
         System.out.println("What category do you want to put your dice total? ");
         Scanner g = new Scanner(System.in);
         int cc = g.nextInt();
-        while ((cc < 1 || cc > 13) || this.totals[cc - 1] != -1) {
+        while ((cc < 1 || cc > 13) || (this.totals[cc - 1] != -1 && (cc - 1) != 12)) {
             if (cc < 1 || cc > 13) {
                 System.out.println("Out of range of scorecard.");
             }
